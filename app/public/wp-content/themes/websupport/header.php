@@ -25,14 +25,19 @@
 
 	<script src="<?php echo trailingslashit( get_stylesheet_directory_uri() ); ?>modernizr.js"></script>
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
 	<?php wp_head(); ?>
 </head>
-<body>
-	<div class="wrapper">
 
-	</div>
-	<footer>
-
-	</footer>
-</body>
-</html>
+<body <?php body_class(); ?> data-scroll-id="page-top" id="page-top">
+<?php wp_body_open(); ?>
+<div class="wrapper">
+	<a href="#" data-scroll class="scroll-top">
+		<i class="fa fa-chevron-up"></i>
+		<span class="sr-only">scroll to the top of page</span>
+	</a>
+	<header role="banner">
+		<?php get_template_part( 'views/header', 'nav' ); ?>
+	</header>
+	<div class="content-wrapper">

@@ -48,6 +48,7 @@
     "translate": "gulp translate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "bootstrap-sass": "^3.4.1",
     "smooth-scroll": "^16.1.2"
   }

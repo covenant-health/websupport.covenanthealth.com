@@ -1,0 +1,313 @@
+.gform_fields {
+	@extend .list-unstyled;
+	@extend .row;
+
+	.gfield {
+		margin-bottom: 15px;
+		padding:       0 15px;
+
+		&.gfield_visibility_hidden {
+			display: none;
+		}
+
+		&.hidden_label {
+			label.gfield_label {
+				display: none;
+			}
+		}
+
+		&.gfield_error {
+			@extend .has-error;
+		}
+
+		.ginput_container {
+			.screen-reader-text {
+				@extend .sr-only;
+			}
+
+			&.ginput_container_date {
+				@extend .has-feedback;
+
+				.form-control-feedback {
+					right: 10px;
+				}
+			}
+
+			.gform_fileupload_multifile {
+				border: 3px dashed $gray-lighter;
+
+				.gform_drop_area {
+					padding:    20px;
+					text-align: center;
+
+					&:hover {
+						background-color: lighten($brand-primary, 65%);
+					}
+
+					.gform_drop_instructions {
+						font-weight:   300;
+						margin-bottom: 20px;
+						text-align:    center;
+					}
+
+					.gform_button_select_files {
+						@extend .btn;
+						@extend .btn-primary;
+						display: block;
+						margin:  0 auto;
+						width:   auto !important;
+					}
+				}
+			}
+		}
+
+		.gfield_description {
+			font-size:   $font-size-small;
+			font-weight: 300;
+			margin:      5px 0 0;
+
+			&.validation-message {
+				background: lighten($brand-danger, 50%);
+				color:      $brand-danger;
+				padding:    5px;
+			}
+		}
+
+		> label {
+			font-size:     $font-size-small;
+			font-weight:   600;
+			margin-bottom: 0;
+			margin-bottom: 0;
+
+			> .gfield_required {
+				color:        $brand-red;
+				padding-left: 2px;
+			}
+		}
+
+		input:not([type="radio"]):not([type="checkbox"]):not(.chosen-search-input), select, textarea {
+			@extend .form-control;
+			border-radius: $border-radius-small;
+			font-size:     $font-size-small;
+			font-weight:   300;
+			width:         100%;
+
+			&::placeholder {
+				font-weight: 300 !important;
+			}
+		}
+
+		&.gsection {
+			h2 {
+				margin: ceil(($line-height-computed / 2)) 0 0;
+			}
+
+			&:not(:first-of-type) {
+				h2 {
+					border-top:  1px solid $gray-lighter;
+					padding-top: 28px;
+				}
+			}
+		}
+	}
+}
+
+.gfield_html {
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+	margin-bottom: 15px;
+}
+
+.gfield_checkbox {
+	list-style-type: none;
+	margin:          0;
+	padding:         0;
+
+	li {
+		&:not(:only-of-type),
+		&:not(:last-of-type) {
+			margin-bottom: 10px;
+		}
+	}
+
+	label {
+		cursor:        pointer;
+		font-size:     $font-size-base;
+		font-weight:   300;
+		margin-bottom: 0;
+		padding-left:  35px;
+		position:      relative;
+
+		&:after {
+			clear:   both;
+			content: '';
+			display: table;
+		}
+
+		input[type="checkbox"] {
+			display: none;
+
+			+ .cr {
+				left:     0;
+				position: absolute;
+				top:      0;
+
+				> .cr-icon {
+					opacity:    0;
+					transform:  scale(3) rotateZ(-20deg);
+					transition: all $speed $easing;
+				}
+			}
+
+			&:checked {
+				+ .cr {
+					background: $brand-primary;
+					color:      #fff;
+
+					> .cr-icon {
+						opacity:   1;
+						transform: scale(1) rotateZ(0deg);
+					}
+				}
+			}
+
+			&:disabled {
+				+ .cr {
+					> .cr-icon {
+						opacity: .5;
+					}
+				}
+			}
+		}
+	}
+
+	.cr {
+		border:        2px solid $brand-primary;
+		border-radius: $border-radius-small;
+		display:       inline-block;
+		float:         left;
+		height:        $font-size-large;
+		margin-right:  ceil(($line-height-computed / 2));
+		position:      relative;
+		width:         $font-size-large;
+
+		.cr-icon {
+			font-size:   .8em;
+			left:        15%;
+			line-height: 0;
+			position:    absolute;
+			top:         50%;
+		}
+	}
+}
+
+.ui-datepicker {
+	background: #fff;
+	border:     1px solid $gray-lighter;
+	box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.15);
+	padding:    10px;
+	width:      250px;
+
+	.ui-datepicker-header {
+		align-content:   flex-start;
+		align-items:     flex-start;
+		display:         flex;
+		flex-flow:       row nowrap;
+		justify-content: space-between;
+		margin:          0;
+		padding:         0;
+
+		a {
+			padding-top: 4px;
+
+			&:active,
+			&:focus,
+			&:hover {
+				text-decoration: none;
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		a:first-of-type {
+			order: 1;
+
+			&:before {
+				content:     '\f137';
+				font-family: 'Font Awesome 5 Free';
+				font-weight: 900;
+			}
+		}
+
+		a:last-of-type {
+			order: 3;
+
+			&:before {
+				content:     '\f138';
+				font-family: 'Font Awesome 5 Free';
+				font-weight: 900;
+			}
+		}
+
+		.ui-datepicker-title {
+			align-content:   flex-start;
+			align-items:     flex-start;
+			display:         flex;
+			flex-basis:      100%;
+			flex-flow:       row nowrap;
+			justify-content: space-between;
+			order:           2;
+
+			select {
+				font-weight: 300;
+				@extend .form-control;
+				@extend .input-sm;
+				margin:      0 10px;
+			}
+		}
+	}
+
+	.ui-datepicker-calendar {
+		margin-top: 5px;
+		width:      100%;
+
+		tr {
+			th, td {
+				text-align: center;
+			}
+
+			td {
+				border: 1px solid $gray-lighter;
+
+				&:active,
+				&:focus,
+				&:hover {
+					background: lighten($brand-primary, 60%);
+				}
+
+				a {
+					&:active,
+					&:focus,
+					&:hover {
+						text-decoration: none;
+					}
+				}
+
+				&.ui-datepicker-unselectable {
+					background:  $gray-lighter;
+					color:       $gray-light;
+					cursor:      not-allowed;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+}

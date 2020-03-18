@@ -8,7 +8,13 @@ function theme_features() {
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'custom_logo' );
+	add_theme_support( 'custom-logo', array(
+		'height'      => 102,
+		'width'       => 400,
+		'flex-height' => true,
+		'flex-width'  => true,
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );
 	add_post_type_support( 'page', 'excerpt' );
 }
 
